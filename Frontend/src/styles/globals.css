@@ -1,0 +1,733 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap');
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --font-size: 16px;
+  /* BMDC Brand Colors */
+  --background: #F5F5F5;
+  --foreground: #212121;
+  --card: #ffffff;
+  --card-foreground: #212121;
+  --popover: #ffffff;
+  --popover-foreground: #212121;
+  --primary: #1976D2;
+  --primary-foreground: #ffffff;
+  --secondary: #43A047;
+  --secondary-foreground: #ffffff;
+  --muted: #E8F5E9;
+  --muted-foreground: #4A4A4A;
+  --accent: #FBC02D;
+  --accent-foreground: #212121;
+  --destructive: #d32f2f;
+  --destructive-foreground: #ffffff;
+  --border: rgba(0, 0, 0, 0.12);
+  --input: transparent;
+  --input-background: #ffffff;
+  --switch-background: #BDBDBD;
+  --font-weight-medium: 500;
+  --font-weight-normal: 400;
+  --ring: #1976D2;
+  --chart-1: #1976D2;
+  --chart-2: #43A047;
+  --chart-3: #FBC02D;
+  --chart-4: #00ACC1;
+  --chart-5: #7B1FA2;
+  --radius: 0.75rem;
+  --sidebar: #ffffff;
+  --sidebar-foreground: #212121;
+  --sidebar-primary: #1976D2;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #E3F2FD;
+  --sidebar-accent-foreground: #1976D2;
+  --sidebar-border: rgba(0, 0, 0, 0.08);
+  --sidebar-ring: #1976D2;
+}
+
+.dark {
+  --background: #121212;
+  --foreground: #E0E0E0;
+  --card: #1E1E1E;
+  --card-foreground: #E0E0E0;
+  --popover: #1E1E1E;
+  --popover-foreground: #E0E0E0;
+  --primary: #42A5F5;
+  --primary-foreground: #000000;
+  --secondary: #66BB6A;
+  --secondary-foreground: #000000;
+  --muted: #2C2C2C;
+  --muted-foreground: #9E9E9E;
+  --accent: #FFD54F;
+  --accent-foreground: #000000;
+  --destructive: #EF5350;
+  --destructive-foreground: #000000;
+  --border: rgba(255, 255, 255, 0.12);
+  --input: transparent;
+  --input-background: #2C2C2C;
+  --switch-background: #616161;
+  --ring: #42A5F5;
+  --chart-1: #42A5F5;
+  --chart-2: #66BB6A;
+  --chart-3: #FFD54F;
+  --chart-4: #26C6DA;
+  --chart-5: #AB47BC;
+  --sidebar: #1E1E1E;
+  --sidebar-foreground: #E0E0E0;
+  --sidebar-primary: #42A5F5;
+  --sidebar-primary-foreground: #000000;
+  --sidebar-accent: #1A237E;
+  --sidebar-accent-foreground: #42A5F5;
+  --sidebar-border: rgba(255, 255, 255, 0.08);
+  --sidebar-ring: #42A5F5;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-input-background: var(--input-background);
+  --color-switch-background: var(--switch-background);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+}
+
+/**
+ * Base typography. This is not applied to elements which have an ancestor with a Tailwind text class.
+ */
+@layer base {
+  :where(:not(:has([class*=" text-"]), :not(:has([class^="text-"])))) {
+    h1 {
+      font-family: 'Poppins', sans-serif;
+      font-size: var(--text-2xl);
+      font-weight: 600;
+      line-height: 1.3;
+    }
+
+    h2 {
+      font-family: 'Poppins', sans-serif;
+      font-size: var(--text-xl);
+      font-weight: 600;
+      line-height: 1.4;
+    }
+
+    h3 {
+      font-family: 'Poppins', sans-serif;
+      font-size: var(--text-lg);
+      font-weight: 600;
+      line-height: 1.4;
+    }
+
+    h4 {
+      font-family: 'Poppins', sans-serif;
+      font-size: var(--text-base);
+      font-weight: 600;
+      line-height: 1.5;
+    }
+
+    p {
+      font-size: var(--text-base);
+      font-weight: var(--font-weight-normal);
+      line-height: 1.6;
+    }
+
+    label {
+      font-size: var(--text-base);
+      font-weight: var(--font-weight-medium);
+      line-height: 1.5;
+    }
+
+    button {
+      font-size: var(--text-base);
+      font-weight: var(--font-weight-medium);
+      line-height: 1.5;
+    }
+
+    input {
+      font-size: var(--text-base);
+      font-weight: var(--font-weight-normal);
+      line-height: 1.5;
+    }
+  }
+}
+
+html {
+  font-size: var(--font-size);
+}
+
+/* Custom scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--muted);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--ring);
+}
+
+/* PWA Install animation */
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.slide-up {
+  animation: slideUp 0.3s ease-out;
+}
+
+/* Camera scan overlay */
+.scan-overlay {
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.6) 0%,
+    transparent 30%,
+    transparent 70%,
+    rgba(0, 0, 0, 0.6) 100%
+  );
+}
+
+/* Enhanced smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Mobile touch optimization */
+@media (hover: none) and (pointer: coarse) {
+  button, a {
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+/* Improved text rendering */
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Better focus states for accessibility */
+*:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
+/* Enhanced backdrop blur support */
+@supports (backdrop-filter: blur(20px)) or (-webkit-backdrop-filter: blur(20px)) {
+  .backdrop-blur-xl {
+    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px);
+  }
+  
+  .backdrop-blur-2xl {
+    -webkit-backdrop-filter: blur(40px);
+    backdrop-filter: blur(40px);
+  }
+}
+
+/* Mobile-specific improvements */
+@media (max-width: 640px) {
+  /* Prevent horizontal scroll */
+  body {
+    overflow-x: hidden;
+  }
+  
+  /* Better touch targets */
+  button, a {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  /* Optimize font sizes for mobile */
+  html {
+    font-size: 15px;
+  }
+}
+
+/* Tablet optimizations */
+@media (min-width: 641px) and (max-width: 1024px) {
+  html {
+    font-size: 15.5px;
+  }
+}
+
+/* Desktop optimizations */
+@media (min-width: 1025px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+/* Text shadow utilities for better contrast on images */
+.text-shadow-sm {
+  text-shadow: 0 1px 5px rgba(0, 0, 0, 0.5);
+}
+
+.text-shadow-md {
+  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.5);
+}
+
+.text-shadow-lg {
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5), 0 0 20px rgba(0, 0, 0, 0.3);
+}
+
+.text-shadow-xl {
+  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.5), 0 0 40px rgba(0, 0, 0, 0.3);
+}
+
+/* Icon shadow for better visibility */
+.icon-shadow {
+  filter: drop-shadow(0 1px 5px rgba(0, 0, 0, 0.5));
+}
+
+/* Dark overlay utilities for ensuring text contrast */
+.overlay-dark-sm {
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3));
+}
+
+.overlay-dark-md {
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
+}
+
+.overlay-dark-lg {
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7));
+}
+
+.overlay-dark-gradient {
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.4) 0%, transparent 30%, transparent 70%, rgba(0, 0, 0, 0.6) 100%);
+}
+
+/* ============================================
+   PRINT-SPECIFIC STYLES
+   Requirements: 2.4, 2.5, 2.6, 2.7, 5.1-5.7
+   ============================================ */
+
+@media print {
+  /* ===== Page Setup (Requirement 2.7, 5.3) ===== */
+  @page {
+    size: letter; /* 8.5" x 11" */
+    margin: 0.75in 0.75in 1in 0.75in; /* top, right, bottom, left */
+  }
+
+  /* ===== Root Print Styles (Requirement 2.6, 5.1) ===== */
+  * {
+    /* Force black text on white background for optimal print contrast */
+    color: #000000 !important;
+    background: #ffffff !important;
+    /* Remove shadows and effects that don't print well */
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  body {
+    /* Reset body styles for print */
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-size: 10pt; /* Minimum readable size - Requirement 5.2 */
+    line-height: 1.5;
+    color: #000000 !important;
+    background: #ffffff !important;
+  }
+
+  /* ===== Hide Screen-Only Elements (Requirement 2.5, 4.5) ===== */
+  /* Hide navigation, buttons, and interactive UI */
+  nav,
+  header,
+  footer,
+  aside,
+  button,
+  .print-hidden,
+  [role="navigation"],
+  [role="banner"],
+  [role="contentinfo"],
+  .sidebar,
+  .navigation,
+  .header,
+  .footer,
+  .btn,
+  .button,
+  input[type="button"],
+  input[type="submit"],
+  input[type="reset"],
+  .no-print {
+    display: none !important;
+  }
+
+  /* Hide interactive form elements */
+  input,
+  select,
+  textarea,
+  .form-control {
+    display: none !important;
+  }
+
+  /* Hide charts (we show tables instead) */
+  .recharts-wrapper,
+  canvas,
+  svg:not(.print-visible) {
+    display: none !important;
+  }
+
+  /* ===== Show Print-Only Content ===== */
+  .print-container {
+    display: block !important;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  /* ===== Typography (Requirement 5.2) ===== */
+  h1 {
+    font-size: 18pt; /* Larger than 14pt minimum for main heading */
+    font-weight: 700;
+    margin-top: 0;
+    margin-bottom: 0.25in;
+    page-break-after: avoid;
+  }
+
+  h2 {
+    font-size: 14pt; /* Minimum for headings */
+    font-weight: 600;
+    margin-top: 0.5in; /* Section spacing - Requirement 5.3 */
+    margin-bottom: 0.15in;
+    page-break-after: avoid;
+  }
+
+  h3 {
+    font-size: 12pt;
+    font-weight: 600;
+    margin-top: 0.3in;
+    margin-bottom: 0.1in;
+    page-break-after: avoid;
+  }
+
+  p {
+    font-size: 10pt; /* Minimum body text size */
+    margin-bottom: 0.1in;
+    orphans: 3;
+    widows: 3;
+  }
+
+  /* ===== Print Container Layout ===== */
+  .print-container {
+    padding: 0;
+    margin: 0;
+  }
+
+  /* ===== Print Header (Requirement 7.1) ===== */
+  .print-header {
+    margin-bottom: 0.5in; /* Section spacing */
+    text-align: center;
+    page-break-after: avoid;
+  }
+
+  .print-header h1 {
+    font-size: 20pt;
+    font-weight: 700;
+    margin: 0;
+  }
+
+  /* ===== Print Metadata (Requirement 7.2) ===== */
+  .print-metadata {
+    margin-bottom: 0.5in; /* Section spacing */
+    padding-bottom: 0.15in;
+    border-bottom: 1pt solid #000000;
+    page-break-after: avoid;
+  }
+
+  .print-metadata p {
+    margin: 0.05in 0;
+    font-size: 10pt;
+  }
+
+  .print-metadata strong {
+    font-weight: 600;
+  }
+
+  /* ===== Table Styling (Requirement 5.7, 2.3) ===== */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 0.15in;
+    margin-bottom: 0.5in; /* Section spacing */
+    page-break-inside: avoid; /* Avoid breaking tables - Requirement 5.4 */
+  }
+
+  thead {
+    display: table-header-group; /* Repeat headers on each page */
+  }
+
+  tbody {
+    display: table-row-group;
+  }
+
+  tfoot {
+    display: table-footer-group;
+  }
+
+  th {
+    font-size: 10pt;
+    font-weight: 600;
+    text-align: left;
+    padding: 0.08in 0.1in;
+    border: 1pt solid #000000; /* Table borders for readability */
+    background: #f0f0f0 !important; /* Light gray for headers */
+  }
+
+  td {
+    font-size: 10pt;
+    padding: 0.08in 0.1in;
+    border: 1pt solid #000000; /* Table gridlines for readability */
+    vertical-align: top;
+  }
+
+  /* Center-aligned table cells */
+  td.text-center,
+  th.text-center {
+    text-align: center;
+  }
+
+  /* Prevent table rows from breaking across pages */
+  tr {
+    page-break-inside: avoid;
+  }
+
+  /* ===== Summary Stats Table (Requirement 7.3) ===== */
+  .summary-stats-table {
+    margin-bottom: 0.5in;
+    page-break-inside: avoid;
+  }
+
+  .summary-stats-table h2 {
+    margin-top: 0.5in;
+  }
+
+  .summary-stats-table table {
+    width: 100%;
+  }
+
+  .summary-stats-table th {
+    width: 25%;
+    font-weight: 600;
+    background: #e8e8e8 !important;
+  }
+
+  .summary-stats-table td {
+    width: 25%;
+    font-weight: 400;
+  }
+
+  /* ===== Activity Trend Table (Requirement 7.4) ===== */
+  .activity-trend-table {
+    margin-bottom: 0.5in;
+    page-break-inside: avoid;
+  }
+
+  .activity-trend-table table {
+    width: 100%;
+  }
+
+  .activity-trend-table th {
+    text-align: left;
+  }
+
+  .activity-trend-table td {
+    text-align: left;
+  }
+
+  /* ===== Category Distribution Table (Requirement 7.5) ===== */
+  .category-distribution-table {
+    margin-bottom: 0.5in;
+    page-break-inside: avoid;
+  }
+
+  .category-distribution-table table {
+    width: 100%;
+  }
+
+  .category-distribution-table th {
+    text-align: left;
+  }
+
+  .category-distribution-table td {
+    text-align: left;
+  }
+
+  /* ===== Program Enrollment Table (Requirement 7.6) ===== */
+  .program-enrollment-table {
+    margin-bottom: 0.5in;
+    page-break-inside: avoid;
+  }
+
+  .program-enrollment-table table {
+    width: 100%;
+  }
+
+  .program-enrollment-table th {
+    text-align: left;
+  }
+
+  .program-enrollment-table td {
+    text-align: left;
+  }
+
+  /* ===== Print Footer (Requirement 5.5) ===== */
+  .print-footer {
+    margin-top: 0.5in;
+    padding-top: 0.15in;
+    border-top: 1pt solid #000000;
+    text-align: center;
+    font-size: 9pt;
+    page-break-inside: avoid;
+  }
+
+  .print-footer p {
+    margin: 0.05in 0;
+  }
+
+  /* ===== Page Break Rules (Requirement 5.4, 5.6) ===== */
+  /* Avoid breaking these elements across pages */
+  .print-header,
+  .print-metadata,
+  .summary-stats-table,
+  .activity-trend-table,
+  .category-distribution-table,
+  .program-enrollment-table,
+  .print-footer {
+    page-break-inside: avoid;
+  }
+
+  /* Ensure section headings stay with content */
+  h1, h2, h3, h4, h5, h6 {
+    page-break-after: avoid;
+    page-break-inside: avoid;
+  }
+
+  /* Allow page breaks between major sections if needed */
+  .summary-stats-table,
+  .activity-trend-table,
+  .category-distribution-table,
+  .program-enrollment-table {
+    page-break-before: auto;
+    page-break-after: auto;
+  }
+
+  /* ===== Links (remove underlines and show URLs) ===== */
+  a {
+    text-decoration: none;
+    color: #000000 !important;
+  }
+
+  /* Optionally show URLs after links */
+  a[href]:after {
+    content: " (" attr(href) ")";
+    font-size: 9pt;
+    font-style: italic;
+  }
+
+  /* Don't show URLs for anchor links */
+  a[href^="#"]:after,
+  a[href^="javascript:"]:after {
+    content: "";
+  }
+
+  /* ===== Utility Classes ===== */
+  /* Force page break before element */
+  .page-break-before {
+    page-break-before: always;
+  }
+
+  /* Force page break after element */
+  .page-break-after {
+    page-break-after: always;
+  }
+
+  /* Prevent page break inside element */
+  .page-break-avoid {
+    page-break-inside: avoid;
+  }
+
+  /* ===== Accessibility for Print ===== */
+  /* Ensure abbreviations are expanded */
+  abbr[title]:after {
+    content: " (" attr(title) ")";
+    font-size: 9pt;
+  }
+
+  /* ===== Image Handling ===== */
+  img {
+    max-width: 100% !important;
+    page-break-inside: avoid;
+  }
+
+  /* ===== Remove Unnecessary Spacing ===== */
+  /* Remove extra padding/margins from containers */
+  .container,
+  .wrapper,
+  main {
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+}
+
+/* ===== Screen-Only: Hide Print Container (Requirement 4.5) ===== */
+@media screen {
+  .print-container {
+    display: none;
+  }
+}
